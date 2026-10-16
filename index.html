@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des étudiants UNCHK</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <p class="subtitle-top">ESPACE ADMINISTRATION</p>
+                <h1>Gestion des étudiants UNCHK</h1>
+                <p class="subtitle-bottom">Gérez les inscriptions et suivez les résultats.</p>
+            </div>
+            <div class="header-icon">🎓</div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="stats-grid">
+            <article class="card stat-card">
+                <span class="stat-label">Total étudiants</span>
+                <span class="stat-value" id="stat-total">0</span>
+            </article>
+            <article class="card stat-card">
+                <span class="stat-label">Moyenne générale</span>
+                <span class="stat-value" id="stat-moyenne">0,00/20</span>
+            </article>
+            <article class="card stat-card">
+                <span class="stat-label">Étudiants admis</span>
+                <span class="stat-value" id="stat-admis">0</span>
+            </article>
+            <article class="card stat-card">
+                <span class="stat-label">Meilleur étudiant</span>
+                <span class="stat-value" id="meilleur-etudiant">Aucun étudiant</span>
+                <span id="meilleure-note">—/20</span>
+            </article>
+        </section>
+
+        <section class="card form-card">
+            <h2 id="titre-formulaire">Ajouter un étudiant</h2>
+
+            <p class="error-msg" id="erreur" role="alert"></p>
+            <p class="success-msg" id="mgs" role="status"></p>
+
+            <form class="form-grid" id="form">
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" placeholder="Ex. : Diallo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" placeholder="Ex. : Awa" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" id="email" placeholder="awa@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="classe">Classe</label>
+                    <input type="text" id="classe" placeholder="Ex. : L1 Informatique" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="note">Note sur 20</label>
+                    <input type="number" id="note" min="0" max="20" step="0.01" required>
+                </div>
+
+                <div class="form-group full-width form-actions">
+                    <button type="submit" id="btn" class="btn-submit">
+                        Ajouter l'étudiant
+                    </button>
+                    <button type="button" id="btn-annuler" class="btn-cancel" hidden>
+                        Annuler la modification
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card table-card">
+            <div class="table-header">
+                <div>
+                    <h2>Liste des étudiants</h2>
+                    <p class="table-subtitle">Consultez et gérez les inscriptions.</p>
+                </div>
+
+                <div class="table-filters">
+                    <select id="filtre-classe" class="search-input">
+                        <option value="">Toutes les classes</option>
+                    </select>
+                    <input type="search" id="recherche"
+                           placeholder="Rechercher un étudiant..."
+                           class="search-input">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom complet</th>
+                            <th>E-mail</th>
+                            <th>Classe</th>
+                            <th>Note</th>
+                            <th>Résultat</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="javascript.js" ></script>
+</body>
+</html>
